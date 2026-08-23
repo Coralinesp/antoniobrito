@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonio Brito — Diputado por Haina | Movimiento Rebelde</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           VARIABLES DE DISEÑO
+           ========================================= */
+        :root {
+            --green-deep: #073D28;
+            --green-mid: #0e7a3d;
+            --green-bright: #15905B;
+            --ink: #071A12;
+            --white: #FFFFFF;
+            --hero-white: #f2f1ee;
+            --off-white: #F4F7F2;
+            --red: #C81E2C;
+            --red-dark: #9A1420;
+            --gold: #D4A64A;
+            --line: rgba(10, 78, 51, 0.14);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--ink); background: var(--hero-white); line-height: 1.6; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; transition: all 0.25s ease; }
+        ul { list-style: none; }
+        img { display: block; max-width: 100%; }
+
+        .eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: .85rem; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.05; }
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .9rem; padding: 12px 24px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; transition: all .2s ease; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-red { background: var(--red); color: var(--white); box-shadow: 0 8px 18px -10px rgba(0,0,0,.35); }
+        .btn-red:hover { background: var(--red-dark); }
+        .btn-outline { background: transparent; border-color: rgba(7,61,40,.35); color: var(--green-deep); }
+        .btn-outline:hover { background: rgba(7,61,40,.08); }
+
+        .card,
+        .bio-photo-wrap img,
+        .bio-quote,
+        .leg-tab-btn,
+        .leg-panel,
+        .social-impact-card,
+        .social-impact-note,
+        .gallery-item,
+        .contact-detail,
+        .contact-socials a {
+            border-radius: var(--radius);
+        }
+
+        .legislative-layout > *,
+        .social-impact-grid > *,
+        .gallery-grid > *,
+        .contact-main > * {
+            min-width: 0;
+        }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px; }
+        .card { background: var(--off-white); border: 1px solid var(--line); padding: 32px; border-radius: 8px; border-top: 4px solid var(--green-mid); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-4px); }
+        .card.red-accent { border-top-color: var(--red); }
+        .card h3 { font-size: 1.15rem; color: var(--green-deep); margin-bottom: 12px; }
+        .card p { font-size: .95rem; color: #405048; }
+
+        /* =========================================
+           HEADER & NAVBAR EXTREMO A EXTREMO
+           ========================================= */
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 100; 
+            padding: 0;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            box-shadow: none;
+            transition: all .3s ease; 
+        }
+
+        header.scrolled {
+            background: rgba(246, 247, 243, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom-color: rgba(7, 61, 40, 0.10);
+            box-shadow: 0 4px 20px rgba(7, 26, 18, 0.06);
+        }
+
+        .header-inner { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            max-width: 1320px; 
+            margin: 0 auto; 
+            padding: 16px 34px; 
+            gap: 20px; 
+        }
+
+        .header-left { display: flex; align-items: center; gap: 18px; flex: 0 0 auto; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--green-deep); }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand .name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: .95rem; letter-spacing: .01em; color: var(--green-deep); line-height: 1; white-space: nowrap; }
+        .brand .name small { display: block; font-family: 'Montserrat', sans-serif; font-size: .55rem; letter-spacing: .16em; color: var(--red); font-weight: 700; margin-top: 4px; }
+
+        nav.links { display: flex; align-items: center; gap: 24px; }
+        nav.links a { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; font-size: .75rem; color: #4a5550; position: relative; padding: 6px 0; }
+        nav.links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2.5px; background: var(--green-mid); transition: width .25s ease; border-radius: 2px; }
+        nav.links a:hover::after, nav.links a.current::after { width: 100%; }
+        nav.links a:hover, nav.links a.current { color: var(--green-deep); }
+
+        .header-right { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+        .nav-cta {
+            background: var(--green-mid);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: .75rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .25s ease;
+            box-shadow: 0 4px 12px rgba(14, 122, 61, 0.25);
+        }
+        .nav-cta:hover {
+            background: var(--green-deep);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(7, 61, 40, 0.35);
+        }
+
+        /* =========================================
+           HERO
+           ========================================= */
+        .hero { height: max(100svh, 66.6667vw); position: relative; overflow: hidden; color: var(--ink); background: #1a4c30; display: flex; align-items: center; }
+        .hero-media {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+        }
+        .hero-overlay { position: absolute; inset: 0; z-index: 1; background: transparent; }
+        .hero-accent { display: none; }
+        .hero-inner { position: relative; z-index: 5; width: 100%; max-width: 1320px; margin: 0 auto; padding: 82px 34px 60px; }
+        .hero-content { width: min(540px, 100%); z-index: 8; transform: translateY(-72px); }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: rgb(79, 77, 77); margin-bottom: 8px; font-size: .95rem; letter-spacing: .14em; font-weight: 700; text-transform: uppercase; }
+        .hero h1 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); line-height: 1.05; letter-spacing: -.03em; color: var(--green-deep); }
+        .hero h1 .last-name { font-size: clamp(1.8rem, 3.8vw, 2.8rem); color: var(--green-mid); display: block; }
+        .hero h1 .movement { display: block; font-family: 'Montserrat', sans-serif; font-size: clamp(0.95rem, 1.5vw, 1.35rem); letter-spacing: .13em; color: var(--red); margin-top: 14px; line-height: 1.1; font-weight: 800; text-transform: uppercase; }
+        .hero .sub { margin-top: 20px; max-width: 460px; font-size: 1rem; line-height: 1.6; color: #405048; }
+        .hero .cta-row { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero .btn { border-radius: 999px; padding: 13px 22px; font-size: .8rem; }
+        .hero .btn-outline { border-color: rgba(7,61,40,.35); color: var(--green-deep); background: rgba(255,255,255,.6); }
+        .hero .btn-outline:hover { background: rgba(7,61,40,.08); }
+
+        /* =========================================
+           SECCIONES & BIOGRAFÍA
+           ========================================= */
+        section { padding: 88px 0; }
+        .bg-light { background: var(--white); }
+        .sec-head { max-width: 640px; margin-bottom: 48px; }
+        .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+        .sec-head .eyebrow { color: var(--red); margin-bottom: 10px; display: block; }
+        .sec-head h2 { font-size: clamp(2.1rem, 4.2vw, 3rem); color: var(--green-deep); }
+        .sec-head p { margin-top: 14px; color: #3c463f; font-size: 1.05rem; }
+
+        .bio { display: grid; grid-template-columns: .95fr 1.05fr; gap: 64px; align-items: center; }
+        .bio-photo-wrap { position: relative; min-height: 380px; }
+        .bio-photo-wrap img { width: 100%; max-height: 520px; object-fit: cover; display: block; border-radius: 8px; box-shadow: 0 30px 60px -18px rgba(7,61,40,.25); }
+        .bio-quote { position: absolute; left: -28px; bottom: -30px; width: 85%; max-width: 320px; background: var(--white); border-radius: 8px; padding: 26px 28px 24px; box-shadow: 0 24px 48px -16px rgba(7,26,18,.25); border-top: 4px solid var(--red); z-index: 2; }
+        .bio-quote .quote-mark { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 2.6rem; color: var(--red); line-height: 1; margin-bottom: 6px; }
+        .bio-quote p { font-style: italic; color: #354139; font-size: .92rem; line-height: 1.55; margin-bottom: 12px; }
+        .bio-quote .sig { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--green-deep); }
+        .bio-text p { color: #354139; margin-bottom: 16px; font-size: 1.02rem; }
+        #about { background: #1a4c30; color: var(--white); }
+        #about .sec-head h2 { color: var(--white); }
+        #about .bio-text p { color: rgba(255,255,255,.82); }
+
+        /* =========================================
+           LÍNEA DE TIEMPO / TRAYECTORIA
+           ========================================= */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .timeline-title-col .eyebrow {
+            color: var(--red);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .timeline-title-col h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--green-deep);
+            line-height: 1.08;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--red);
+        }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 28px;
+            margin-bottom: 48px;
+            align-items: start;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+
+        .timeline-head {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-year {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--red);
+            letter-spacing: .02em;
+        }
+
+        .timeline-role {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--green-deep);
+            line-height: 1.25;
+            margin-top: 4px;
+        }
+
+        .timeline-desc {
+            font-size: .95rem;
+            color: #405048;
+            line-height: 1.6;
+        }
+
+/* =========================================
+   LABOR LEGISLATIVA — INFORME DE GESTIÓN
+   ========================================= */
+
+.legislative-section {
+    position: relative;
+    background: #f6f7f3;
+    overflow: hidden;
+    padding: 110px 0 120px;
+}
+
+/* Texto gigante de fondo */
+.legislative-section::before {
+    content: "GESTIÓN";
+    position: absolute;
+    right: -70px;
+    top: 90px;
+    font-size: clamp(9rem, 19vw, 18rem);
+    font-weight: 900;
+    line-height: .8;
+    letter-spacing: -.09em;
+    color: rgba(7, 61, 40, .025);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.legislative-header {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 130px;
+    gap: 50px;
+    align-items: end;
+
+    padding-bottom: 42px;
+    border-bottom: 1px solid rgba(7, 61, 40, .16);
+}
+
+.legislative-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.legislative-kicker::before {
+    content: "";
+    width: 32px;
+    height: 2px;
+    background: var(--red);
+}
+
+.legislative-kicker span {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.legislative-header h2 {
+    max-width: 760px;
+    margin: 0;
+
+    font-size: clamp(3rem, 5.4vw, 5.2rem);
+    line-height: .92;
+    letter-spacing: -.055em;
+
+    color: var(--green-deep);
+}
+
+.legislative-header p {
+    max-width: 650px;
+    margin-top: 24px;
+
+    font-size: .98rem;
+    line-height: 1.7;
+    color: #4c5852;
+}
+
+.legislative-header p strong {
+    color: var(--green-deep);
+}
+
+/* =========================================
+   CONTADOR 04
+   ========================================= */
+
+.legislative-index {
+    min-width: 110px;
+    padding-left: 24px;
+    padding-bottom: 3px;
+
+    border-left: 1px solid rgba(7, 61, 40, .20);
+}
+
+.legislative-index small {
+    display: block;
+
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    color: #7c8781;
+}
+
+.legislative-index strong {
+    display: block;
+    margin-top: 3px;
+
+    font-size: 3.3rem;
+    line-height: .9;
+    letter-spacing: -.07em;
+    font-weight: 900;
+
+    color: var(--green-deep);
+}
+
+.legislative-index span {
+    display: block;
+    margin-top: 8px;
+
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+
+    color: var(--red);
+}
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.legislative-layout {
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+
+    gap: 44px;
+    margin-top: 38px;
+
+    align-items: stretch;
+}
+
+/* =========================================
+   NAVEGACIÓN
+   ========================================= */
+
+.legislative-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.leg-tab-btn {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 18px;
+
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    min-height: 88px;
+
+    padding: 15px 14px;
+
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(7, 61, 40, .14);
+
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        padding .25s ease;
+}
+
+.leg-tab-btn:first-child {
+    border-top: 1px solid rgba(7, 61, 40, .14);
+}
+
+.leg-tab-btn .number {
+    font-size: 1.65rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -.06em;
+    color: #8c9993;
+}
+
+.leg-tab-btn .tab-title {
+    font-size: .76rem;
+    line-height: 1.25;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    color: var(--green-deep);
+}
+
+.leg-tab-btn .arrow {
+    width: 16px;
+    height: 16px;
+
+    stroke: var(--green-deep);
+
+    transition: transform .25s ease;
+}
+
+.leg-tab-btn:hover {
+    background: rgba(7, 61, 40, .035);
+    padding-left: 20px;
+}
+
+.leg-tab-btn:hover .number {
+    color: var(--green-mid);
+}
+
+.leg-tab-btn.active {
+    background: var(--green-deep);
+    border-bottom-color: var(--green-deep);
+    padding-left: 16px;
+}
+
+.leg-tab-btn.active::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 4px;
+    background: var(--red);
+}
+
+.leg-tab-btn.active .number,
+.leg-tab-btn.active .tab-title,
+.leg-tab-btn.active .arrow {
+    color: white;
+    stroke: white;
+}
+
+.leg-tab-btn.active .arrow {
+    transform: translateX(4px);
+}
+
+/* =========================================
+   TARJETA DE CONTENIDO
+   ========================================= */
+
+.legislative-content {
+    position: relative;
+
+    min-height: 470px;
+    min-width: 0;
+
+    background: white;
+    border: 1px solid rgba(7, 61, 40, .14);
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 45px rgba(7, 61, 40, .055);
+}
+
+.leg-panel {
+    display: none;
+    min-height: 470px;
+
+    animation: legislativeFade .35s ease;
+}
+
+.leg-panel.active {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+}
+
+@keyframes legislativeFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   INFORMACIÓN
+   ========================================= */
+
+.leg-panel-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-wrap: anywhere;
+
+    padding: 42px 42px 36px;
+}
+
+.leg-panel-kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 15px;
+}
+
+.leg-panel-kicker::before {
+    content: "";
+
+    width: 24px;
+    height: 2px;
+
+    background: var(--red);
+}
+
+.leg-panel-kicker span {
+    font-size: .61rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+
+    color: var(--red);
+}
+
+.leg-panel h3 {
+    max-width: 500px;
+
+    margin: 0;
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: .98;
+    letter-spacing: -.045em;
+
+    color: var(--green-deep);
+}
+
+.leg-panel-description {
+    max-width: 550px;
+
+    margin-top: 19px;
+
+    font-size: .87rem;
+    line-height: 1.75;
+
+    color: #56615b;
+}
+
+.leg-panel-description strong {
+    color: var(--green-deep);
+}
+
+/* =========================================
+   LOCALIDADES
+   ========================================= */
+
+.leg-locations {
+    margin-top: 24px;
+
+    border-top: 1px solid rgba(7, 61, 40, .12);
+}
+
+.leg-location {
+    display: grid;
+    grid-template-columns: 28px 125px minmax(0, 1fr);
+
+    gap: 11px;
+    align-items: center;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid rgba(7, 61, 40, .09);
+}
+
+.leg-location .location-icon {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--green-deep);
+    color: white;
+}
+
+.leg-location .location-icon svg {
+    width: 11px;
+    height: 11px;
+}
+
+.leg-location strong {
+    font-size: .64rem;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .03em;
+
+    color: var(--green-deep);
+}
+
+.leg-location span {
+    font-size: .65rem;
+    line-height: 1.4;
+
+    color: #727d77;
+}
+
+/* =========================================
+   LISTAS
+   ========================================= */
+
+.leg-simple-list {
+    margin-top: 26px;
+
+    border-top: 1px solid rgba(7, 61, 40, .12);
+}
+
+.leg-simple-item {
+    padding: 13px 0;
+
+    border-bottom: 1px solid rgba(7, 61, 40, .09);
+}
+
+.leg-simple-item strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: .67rem;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .04em;
+
+    color: var(--green-deep);
+}
+
+.leg-simple-item span {
+    font-size: .7rem;
+    line-height: 1.45;
+
+    color: #727d77;
+}
+
+/* =========================================
+   LINK
+   ========================================= */
+
+.leg-panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    width: fit-content;
+
+    margin-top: auto;
+    padding-top: 22px;
+    padding-bottom: 5px;
+
+    font-size: .63rem;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .08em;
+
+    color: var(--green-deep);
+
+    border-bottom: 2px solid var(--red);
+}
+
+.leg-panel-link svg {
+    transition: transform .2s ease;
+}
+
+.leg-panel-link:hover svg {
+    transform: translateX(4px);
+}
+
+/* =========================================
+   BLOQUE VISUAL
+   ========================================= */
+
+.leg-panel-media {
+    position: relative;
+
+    min-height: 100%;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #073D28 0%,
+            #095137 100%
+        );
+}
+
+/*
+   La imagen funciona como fondo.
+   Si todavía no tienes la foto, NO aparecerá
+   ningún icono de imagen rota.
+*/
+.leg-panel-media::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7,61,40,.15),
+            rgba(7,61,40,.72)
+        ),
+        url("img/galeria/SaveClip.App_569208998_24563840496622004_3260616972115857483_n.jpg") center / cover no-repeat;
+
+    opacity: .9;
+}
+
+/* Marco rojo */
+.leg-panel-media::after {
+    content: "";
+
+    position: absolute;
+
+    top: 28px;
+    right: 28px;
+
+    width: 78px;
+    height: 78px;
+
+    border-top: 1px solid var(--red);
+    border-right: 1px solid var(--red);
+}
+
+/* Número */
+.leg-panel-number {
+    position: absolute;
+
+    right: 20px;
+    bottom: 12px;
+
+    z-index: 4;
+
+    font-size: 5.5rem;
+    line-height: .8;
+
+    font-weight: 900;
+    letter-spacing: -.09em;
+
+    color: rgba(255,255,255,.12);
+}
+
+/* Ocultar img real porque usamos background */
+.leg-panel-media img {
+    display: none;
+}
+
+.leg-panel:nth-child(2) .leg-panel-media::before {
+    background-image:
+        linear-gradient(135deg, rgba(7,61,40,.15), rgba(7,61,40,.72)),
+        url("img/galeria/SaveClip.App_595752184_24925917850414265_1795301816417151080_n.jpg");
+}
+
+.leg-panel:nth-child(3) .leg-panel-media::before {
+    background-image:
+        linear-gradient(135deg, rgba(7,61,40,.15), rgba(7,61,40,.72)),
+        url("img/galeria/SaveClip.App_614362923_25221767027496011_4770174981376270974_n.jpg");
+}
+
+.leg-panel:nth-child(4) .leg-panel-media::before {
+    background-image:
+        linear-gradient(135deg, rgba(7,61,40,.15), rgba(7,61,40,.72)),
+        url("img/galeria/SaveClip.App_689702542_26331818949824141_2540523141842683344_n.jpg");
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1050px) {
+
+    .legislative-header {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .legislative-index {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        border-left: 0;
+        border-top: 1px solid rgba(7,61,40,.15);
+
+        padding: 18px 0 0;
+    }
+
+    .legislative-index strong {
+        font-size: 2.6rem;
+    }
+
+    .legislative-layout {
+        grid-template-columns: 270px minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .leg-panel.active {
+        grid-template-columns: 1fr;
+    }
+
+    .leg-panel-media {
+        min-height: 230px;
+        order: -1;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .legislative-section {
+        padding: 80px 0;
+    }
+
+    .legislative-header {
+        padding-bottom: 32px;
+    }
+
+    .legislative-header h2 {
+        font-size: clamp(2.8rem, 11vw, 4rem);
+    }
+
+    .legislative-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .legislative-content {
+        width: 100%;
+    }
+
+    .legislative-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .leg-tab-btn {
+        min-height: 78px;
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .leg-tab-btn .number {
+        font-size: 1.3rem;
+    }
+
+    .leg-tab-btn .tab-title {
+        font-size: .62rem;
+    }
+
+    .leg-tab-btn .arrow {
+        display: none;
+    }
+
+    .leg-panel {
+        min-height: auto;
+    }
+
+    .leg-panel.active {
+        width: 100%;
+    }
+
+    .leg-panel-info {
+        padding: 28px 18px;
+    }
+
+    .leg-panel-media {
+        min-height: 220px;
+    }
+
+    .leg-location {
+        grid-template-columns: 26px 1fr;
+    }
+
+    .leg-location span {
+        grid-column: 2;
+    }
+
+    .leg-location > * {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .legislative-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .legislative-header h2 {
+        font-size: 2.65rem;
+    }
+
+    .leg-panel h3 {
+        font-size: 1.9rem;
+    }
+
+    .leg-panel-description {
+        font-size: .84rem;
+    }
+}
+
+        /* =========================================
+           OBRAS SOCIALES — REDISEÑO
+           ========================================= */
+        .social-impact-section {
+            position: relative;
+            background: #073D28;
+            color: var(--white);
+            overflow: hidden;
+            padding: 110px 0 120px;
+        }
+
+        .social-impact-section::before {
+            content: "IMPACTO";
+            position: absolute;
+            right: -35px;
+            top: 45px;
+            font-size: clamp(8rem, 19vw, 18rem);
+            font-weight: 900;
+            line-height: .8;
+            letter-spacing: -.09em;
+            color: rgba(255,255,255,.035);
+            pointer-events: none;
+        }
+
+        .social-impact-header {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 250px;
+            gap: 50px;
+            align-items: end;
+            padding-bottom: 38px;
+            border-bottom: 1px solid rgba(255,255,255,.14);
+        }
+
+        .social-impact-kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .social-impact-kicker::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .social-impact-kicker span {
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: #F0C46B;
+        }
+
+        .social-impact-header h2 {
+            max-width: 780px;
+            font-size: clamp(2.8rem, 5.5vw, 5.3rem);
+            line-height: .92;
+            letter-spacing: -.055em;
+            color: var(--white);
+        }
+
+        .social-impact-header p {
+            max-width: 650px;
+            margin-top: 22px;
+            font-size: .98rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,.72);
+        }
+
+        .social-impact-stat {
+            border-left: 1px solid rgba(255,255,255,.2);
+            padding-left: 25px;
+        }
+
+        .social-impact-stat small {
+            display: block;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.48);
+        }
+
+        .social-impact-stat strong {
+            display: block;
+            margin-top: 4px;
+            font-size: 4.4rem;
+            line-height: .9;
+            letter-spacing: -.08em;
+            color: var(--white);
+        }
+
+        .social-impact-stat span {
+            display: block;
+            margin-top: 9px;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #F0C46B;
+        }
+
+        .social-impact-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.35fr .9fr .9fr;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .social-impact-card {
+            min-height: 330px;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border: 1px solid rgba(255,255,255,.12);
+            background:
+                linear-gradient(180deg, rgba(7,61,40,.08), rgba(7,61,40,.88)),
+                url("img/galeria/SaveClip.App_569208998_24563840496622004_3260616972115857483_n.jpg") center / cover no-repeat;
+            transition: transform .3s ease, border-color .3s ease;
+        }
+
+        .social-impact-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,.28);
+        }
+
+        .social-impact-card.featured {
+            min-height: 330px;
+            background:
+                linear-gradient(180deg, rgba(7,61,40,.05), rgba(7,61,40,.88)),
+                url("img/galeria/SaveClip.App_569208998_24563840496622004_3260616972115857483_n.jpg") center / cover no-repeat;
+        }
+
+        .social-impact-card:nth-child(2) {
+            background-image:
+                linear-gradient(180deg, rgba(7,61,40,.08), rgba(7,61,40,.88)),
+                url("img/galeria/SaveClip.App_595752184_24925917850414265_1795301816417151080_n.jpg");
+        }
+
+        .social-impact-card:nth-child(3) {
+            background-image:
+                linear-gradient(180deg, rgba(7,61,40,.08), rgba(7,61,40,.88)),
+                url("img/galeria/SaveClip.App_614362923_25221767027496011_4770174981376270974_n.jpg");
+        }
+
+        .social-impact-card::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 42%;
+            background: linear-gradient(transparent, rgba(0,0,0,.55));
+            pointer-events: none;
+        }
+
+        .social-impact-icon {
+            position: absolute;
+            top: 28px;
+            left: 28px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,.22);
+            color: var(--white);
+            z-index: 3;
+        }
+
+        .social-impact-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-impact-card-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .social-impact-card .index {
+            display: block;
+            margin-bottom: 8px;
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .15em;
+            color: #F0C46B;
+        }
+
+        .social-impact-card h3 {
+            color: var(--white);
+            font-size: clamp(1.25rem, 2vw, 1.8rem);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .social-impact-card p {
+            color: rgba(255,255,255,.7);
+            font-size: .82rem;
+            line-height: 1.6;
+            max-width: 420px;
+        }
+
+        .social-impact-bottom {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .social-impact-note {
+            padding: 23px 26px;
+            border-left: 3px solid var(--red);
+            background: rgba(255,255,255,.055);
+        }
+
+        .social-impact-note strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .68rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .social-impact-note span {
+            color: rgba(255,255,255,.62);
+            font-size: .78rem;
+        }
+
+        /* =========================================
+           GALERÍA
+           ========================================= */
+        .gallery-section {
+            background: #F6F7F3;
+            padding: 110px 0 120px;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 38px;
+        }
+
+        .gallery-header .sec-head {
+            margin-bottom: 0;
+        }
+
+        .gallery-count {
+            font-size: .66rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            padding-bottom: 7px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(2, 260px);
+            gap: 14px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--green-deep);
+            border-radius: 12px;
+            isolation: isolate;
+        }
+
+        .gallery-item.large {
+            grid-row: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .55s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.055);
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 48%, rgba(0,0,0,.72));
+            z-index: 1;
+        }
+
+        .gallery-caption {
+            display: none;
+        }
+
+        .gallery-caption span {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: #F0C46B;
+        }
+
+        .gallery-caption strong {
+            display: block;
+            font-size: .95rem;
+            line-height: 1.15;
+        }
+
+        .gallery-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            color: rgba(255,255,255,.55);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           CONTACTO 
+           ========================================= */
+        .contact-section {
+            position: relative;
+            background: var(--hero-white);
+            padding: 110px 0 0;
+            overflow: hidden;
+        }
+
+        .contact-main {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            min-height: 540px;
+        }
+
+        .contact-intro {
+            position: relative;
+            padding: 70px 60px 70px 0;
+            border-right: 1px solid var(--line);
+        }
+
+
+        .contact-intro .eyebrow {
+            display: block;
+            margin-bottom: 13px;
+            color: var(--red);
+        }
+
+        .contact-intro h2 {
+            max-width: 480px;
+            font-size: clamp(2.7rem, 5vw, 4.8rem);
+            line-height: .92;
+            color: var(--green-deep);
+        }
+
+        .contact-intro p {
+            max-width: 430px;
+            margin-top: 22px;
+            color: #59655e;
+            font-size: .95rem;
+            line-height: 1.75;
+        }
+
+        .contact-person {
+            margin-top: 34px;
+            padding-top: 22px;
+
+        }
+
+        .contact-person strong {
+            display: block;
+            color: var(--green-deep);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .contact-person span {
+            display: block;
+            margin-top: 5px;
+            color: #7A857F;
+            font-size: .74rem;
+        }
+
+        .contact-details {
+            padding: 70px 0 70px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-detail {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 20px;
+            padding: 25px 0;
+        }
+
+        .contact-detail:first-child {
+            padding-top: 0;
+        }
+
+        .contact-detail:last-child {
+            border-bottom: 0;
+        }
+
+        .contact-detail-icon {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--green-mid);
+            color: var(--white);
+            border-radius: 50%;
+        }
+
+        .contact-detail-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .contact-detail small {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .contact-detail strong,
+        .contact-detail a {
+            display: block;
+            color: var(--green-deep);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-detail a:hover {
+            color: var(--green-mid);
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 9px;
+            margin-top: 10px;
+        }
+
+        .contact-socials a {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            color: var(--green-deep);
+            font-size: .68rem;
+            font-weight: 800;
+            transition: all .2s ease;
+        }
+
+        .contact-socials a:hover {
+            background: var(--green-deep);
+            color: var(--white);
+            border-color: var(--green-deep);
+        }
+
+        .contact-strip {
+            margin-top: 0;
+            background: var(--green-deep);
+            color: var(--white);
+            padding: 24px 0;
+        }
+
+        .contact-strip-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .contact-strip strong {
+            font-size: .78rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .contact-strip span {
+            color: rgba(255,255,255,.6);
+            font-size: .7rem;
+        }
+
+        @media (max-width: 900px) {
+            .social-impact-header {
+                grid-template-columns: 1fr;
+            }
+
+            .social-impact-stat {
+                border-left: 0;
+                border-top: 1px solid rgba(255,255,255,.2);
+                padding: 18px 0 0;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .social-impact-stat strong {
+                font-size: 2.8rem;
+            }
+
+            .social-impact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .social-impact-card.featured {
+                grid-column: auto;
+                min-height: 330px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 280px 220px 220px;
+            }
+
+            .gallery-item.large {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .contact-main {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-intro {
+                padding: 65px 0 45px;
+                border-right: 0;
+            }
+
+            .contact-details {
+                padding: 45px 0 65px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .social-impact-section,
+            .gallery-section,
+            .contact-section {
+                padding-top: 80px;
+            }
+
+            .social-impact-grid,
+            .social-impact-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .social-impact-card.featured {
+                grid-column: auto;
+                min-height: 330px;
+            }
+
+            .gallery-header {
+                display: block;
+            }
+
+            .gallery-count {
+                margin-top: -25px;
+                margin-bottom: 25px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, 260px);
+            }
+
+            .gallery-item.large {
+                grid-column: auto;
+            }
+
+            .contact-detail {
+                grid-template-columns: 45px 1fr;
+                gap: 14px;
+            }
+
+            .contact-strip-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+/* =========================================
+   FOOTER — FONDO GRÁFICO
+   ========================================= */
+footer {
+    position: relative;
+    min-height: 390px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: var(--white);
+
+    background-image: url('img/footer.png');
+    background-position: center bottom;
+    background-size: auto 250%;
+    background-repeat: no-repeat;
+}
+
+.footer-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 58px 0 25px;
+}
+
+.footer-main {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.footer-message {
+    max-width: 510px;
+}
+
+.footer-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 13px;
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #F0C46B;
+}
+
+.footer-kicker::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--red);
+}
+
+.footer-message h3 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.7rem);
+    line-height: .92;
+    letter-spacing: -.055em;
+    color: var(--white);
+}
+
+.footer-message p {
+    max-width: 440px;
+    margin-top: 16px;
+    color: rgba(255,255,255,.72);
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+.footer-meta {
+    text-align: right;
+}
+
+.footer-meta strong {
+    display: block;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.footer-meta span {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255,255,255,.6);
+    font-size: .7rem;
+}
+
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 35px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255,255,255,.22);
+    font-size: .62rem;
+    color: rgba(255,255,255,.5);
+}
+
+@media (max-width: 650px) {
+    footer {
+        min-height: 470px;
+        background-size: auto 250%;
+        background-position: center bottom;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .footer-meta {
+        text-align: left;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 7px;
+    }
+}
+
+        /* RESPONSIVE */
+        @media (min-width: 651px) and (max-width: 1024px) {
+            .hero { background: var(--hero-white); }
+            .hero-media img { object-fit: cover; object-position: center top; }
+        }
+
+        @media (max-width: 1024px) {
+            .header-inner { padding: 14px 20px; }
+            .menu-toggle { display: block; z-index: 101; }
+            nav.links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--white); flex-direction: column; align-items: flex-start; padding: 90px 30px 30px; box-shadow: -10px 0 30px rgba(0,0,0,.15); transition: right 0.3s ease; gap: 22px; }
+            nav.links.active { right: 0; }
+            nav.links a { font-size: .9rem; width: 100%; }
+            .bio { grid-template-columns: 1fr; gap: 36px; }
+            .bio-quote { left: 12px; bottom: -22px; width: calc(100% - 24px); max-width: none; padding: 20px 22px; }
+            .timeline-grid { grid-template-columns: 1fr; gap: 36px; }
+            .legislative-layout { grid-template-columns: 1fr; gap: 24px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 650px) {
+            .nav-cta { display: none; }
+            .hero { height: 100svh; min-height: 0; display: flex; background: #1a4c30; }
+            .hero-media { position: absolute; inset: 0; width: 100%; height: 100%; margin-left: 0; overflow: hidden; }
+            .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 82% bottom; }
+            .hero-inner { position: absolute; inset: 0; padding: 0 20px; }
+            .hero-content { width: 100%; transform: none; }
+            .hero-eyebrow,
+            .hero h1,
+            .hero .sub { display: none; }
+            .hero .cta-row { position: absolute; top: 51%; left: 20px; right: 20px; display: flex; flex-direction: column; width: auto; gap: 10px; transform: translateY(-50%); }
+            .hero .btn { width: 100%; min-height: 42px; padding: 10px 16px; font-size: .68rem; }
+            .gallery-item,
+            .social-impact-card,
+            .contact-detail { border-radius: var(--radius-sm); }
+            .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+            .legislative-content { padding: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 34px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         ENCABEZADO / NAVBAR
+         ========================================= -->
+    <header id="siteHeader">
+        <div class="header-inner">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+                <a href="#inicio" class="brand">
+                    <div class="name">
+                        ANTONIO BRITO
+                        <small>DIPUTADO POR HAINA</small>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="links" id="mainNav">
+                <a href="#inicio" class="current">Inicio</a>
+                <a href="#trayectoria">Trayectoria</a>
+                <a href="#labor-legislativa">Labor Legislativa</a>
+                <a href="#obras-sociales">Obras Sociales</a>
+                <a href="#galeria">Galería</a>
+            </nav>
+
+            <div class="header-right">
+                <a href="#contacto" class="nav-cta">
+                    Contacto
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+    <section class="hero" id="inicio">
+        <div class="hero-media">
+            <img src="img/hero2.png" alt="Antonio Brito en sesión de la Cámara de Diputados">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-accent"></div>
+
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-eyebrow">Juntos Construimos</div>
+
+                <h1>
+                    EL CAMBIO
+                    <span class="last-name">QUE MERECEMOS</span>
+                </h1>
+
+                <p class="sub">
+                    Comprometido con Haina, con su gente y con construir oportunidades que se traduzcan en un mejor futuro para nuestras comunidades.
+                </p>
+
+                <div class="cta-row">
+                    <a href="#labor-legislativa" class="btn btn-red">Conoce sus propuestas</a>
+                    <a href="#about" class="btn btn-outline">Conoce a Antonio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         TRAYECTORIA / SOBRE ANTONIO
+         ========================================= -->
+    <section id="about">
+        <div class="wrap">
+            <div class="bio">
+                <div class="bio-photo-wrap">
+                    <img src="img/antonio.jpg" alt="Antonio Brito">
+                    
+                    <div class="bio-quote">
+                        <div class="quote-mark">“</div>
+                        <p>Trabajar por Haina no es un compromiso de campaña, es la vocación de toda mi vida.</p>
+                        <div class="sig">ANTONIO BRITO</div>
+                    </div>
+                </div>
+                <div class="bio-text">
+                    <div class="sec-head">
+                        <span class="eyebrow">Sobre Antonio</span>
+                        <h2>Origen, Trabajo y Compromiso</h2>
+                    </div>
+                    <p>Nacido y criado en el seno del sector transporte, Antonio Brito comprende desde la raíz las luchas y aspiraciones de la clase trabajadora de nuestra demarcación.</p>
+                    <p>Como vicepresidente de <strong>FENATRANO</strong> y dirigente del <strong>Movimiento Rebelde</strong>, ha construido una trayectoria caracterizada por la defensa de los derechos comunitarios, la justicia social y el bienestar de Bajos de Haina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         LÍNEA DE TIEMPO / TRAYECTORIA
+         ========================================= -->
+    <section id="trayectoria" class="bg-light">
+        <div class="wrap">
+            <div class="timeline-grid">
+                <!-- Columna Izquierda: Título -->
+                <div class="timeline-title-col">
+                    <span class="eyebrow">Nuestra Historia</span>
+                    <h2>A TRAVÉS DE LOS AÑOS</h2>
+                </div>
+
+                <!-- Columna Derecha: Cronología en Línea -->
+                <div class="timeline-container">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-head">
+                            <span class="timeline-year">1959</span>
+                            <span class="timeline-role">Origen y Raíces</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Nace en Najayo, provincia San Cristóbal. Desde muy joven se vinculó al trabajo duro del sector transporte y al servicio social comunitario en la región sur.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-head">
+                            <span class="timeline-year">1994</span>
+                            <span class="timeline-role">Liderazgo Gremial y Social</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Inicia una activa labor de apoyo comunitario en Bajos de Haina. Paralelamente asume roles de liderazgo en la Federación Nacional de Transporte La Nueva Opción (FENATRANO).
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-head">
+                            <span class="timeline-year">2010 – 2016</span>
+                            <span class="timeline-role">Regidor de Bajos de Haina</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Electo Regidor del municipio a través del Movimiento Rebelde. Durante el período 2013-2014 asumió la presidencia de la Sala Capitular, impulsando normativas de fiscalización local.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-head">
+                            <span class="timeline-year">2016 – 2024</span>
+                            <span class="timeline-role">Director Municipal de Quita Sueño</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Asume como el primer Director de la Junta Municipal de Quita Sueño y es reelecto en 2020. Su gestión se caracterizó por la canalización de cañadas y obras básicas de urbanización.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-head">
+                            <span class="timeline-year">2024 – Presente</span>
+                            <span class="timeline-role">Diputado al Congreso</span>
+                        </div>
+                        <p class="timeline-desc">
+                            Electo Diputado por la Circunscripción 3 de San Cristóbal en alianza entre la Fuerza del Pueblo y el Movimiento Rebelde, representando con firmeza los intereses de Haina en el Congreso Nacional.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- =========================================
+     LABOR LEGISLATIVA Y FISCALIZACIÓN
+     ========================================= -->
+<section id="labor-legislativa" class="legislative-section">
+    <div class="wrap">
+
+        <!-- HEADER -->
+        <div class="legislative-header">
+
+            <div>
+                <div class="legislative-kicker">
+                    <span>Congreso Nacional · 2024–2028</span>
+                </div>
+
+                <h2>
+                    Labor Legislativa<br>
+                    y Fiscalización
+                </h2>
+
+                <p>
+                    Iniciativas, resoluciones y supervisión activa
+                    en favor de <strong>Bajos de Haina, San Gregorio
+                    de Nigua, El Carril y Quita Sueño.</strong>
+                </p>
+            </div>
+
+            <div class="legislative-index">
+                <div>
+                    <small>Áreas de</small>
+                    <strong>04</strong>
+                    <span>Gestión</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- CONTENIDO -->
+        <div class="legislative-layout">
+
+            <!-- ÍNDICE -->
+            <div class="legislative-nav" role="tablist">
+
+                <button
+                    class="leg-tab-btn active"
+                    data-target="panel-vial"
+                    role="tab"
+                    aria-selected="true"
+                >
+                    <span class="number">01</span>
+
+                    <span class="tab-title">
+                        Infraestructura Vial
+                        y Transporte
+                    </span>
+
+                    <svg class="arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="2.5"
+                        stroke-linecap="round">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+
+                <button
+                    class="leg-tab-btn"
+                    data-target="panel-servicios"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    <span class="number">02</span>
+
+                    <span class="tab-title">
+                        Servicios e Infraestructura
+                        Comunitaria
+                    </span>
+
+                    <svg class="arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="2.5"
+                        stroke-linecap="round">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+
+                <button
+                    class="leg-tab-btn"
+                    data-target="panel-deporte"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    <span class="number">03</span>
+
+                    <span class="tab-title">
+                        Deporte e Identidad
+                        Local
+                    </span>
+
+                    <svg class="arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="2.5"
+                        stroke-linecap="round">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+
+                <button
+                    class="leg-tab-btn"
+                    data-target="panel-fiscalizacion"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    <span class="number">04</span>
+
+                    <span class="tab-title">
+                        Fiscalización y
+                        Control Político
+                    </span>
+
+                    <svg class="arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="2.5"
+                        stroke-linecap="round">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
+            </div>
+
+
+            <!-- PANEL -->
+            <div class="legislative-content">
+
+
+                <!-- =========================
+                     01 · INFRAESTRUCTURA
+                     ========================= -->
+                <div
+                    class="leg-panel active"
+                    id="panel-vial"
+                    role="tabpanel"
+                >
+
+                    <div class="leg-panel-info">
+
+                        <h3>
+                            Infraestructura Vial
+                            y Transporte
+                        </h3>
+
+                        <p class="leg-panel-description">
+                            Resoluciones sometidas para el asfaltado,
+                            aceras y contenes en
+                            <strong>El Naranjal, El Cacique y Prado Real</strong>;
+                            la intervención urgente de la carretera
+                            principal <strong>Quita Sueño – Manoguayabo</strong>
+                            y la creación de un cruce peatonal y para
+                            motocicletas en la <strong>Av. Refinería</strong>.
+                        </p>
+
+
+                        <div class="leg-locations">
+
+                            <div class="leg-location">
+
+                                <div class="location-icon">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                                        <circle cx="12" cy="10" r="2.2"/>
+                                    </svg>
+                                </div>
+
+                                <strong>El Naranjal</strong>
+
+                                <span>
+                                    Asfaltado, aceras y contenes.
+                                </span>
+
+                            </div>
+
+
+                            <div class="leg-location">
+
+                                <div class="location-icon">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                                        <circle cx="12" cy="10" r="2.2"/>
+                                    </svg>
+                                </div>
+
+                                <strong>El Cacique</strong>
+
+                                <span>
+                                    Intervención y mejoras viales.
+                                </span>
+
+                            </div>
+
+
+                            <div class="leg-location">
+
+                                <div class="location-icon">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                                        <circle cx="12" cy="10" r="2.2"/>
+                                    </svg>
+                                </div>
+
+                                <strong>Prado Real</strong>
+
+                                <span>
+                                    Mejoramiento de infraestructura vial.
+                                </span>
+
+                            </div>
+
+
+                            <div class="leg-location">
+
+                                <div class="location-icon">
+                                    <svg viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                                        <circle cx="12" cy="10" r="2.2"/>
+                                    </svg>
+                                </div>
+
+                                <strong>Quita Sueño – Manoguayabo</strong>
+
+                                <span>
+                                    Intervención de la carretera principal
+                                    y cruce peatonal en Av. Refinería.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- FOTO -->
+                    <div class="leg-panel-media">
+                        <span class="leg-panel-number">01</span>
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     02 · SERVICIOS
+                     ========================= -->
+                <div
+                    class="leg-panel"
+                    id="panel-servicios"
+                    role="tabpanel"
+                >
+
+                    <div class="leg-panel-info">
+
+                        <h3>
+                            Servicios e Infraestructura
+                            Comunitaria
+                        </h3>
+
+                        <p class="leg-panel-description">
+                            Iniciativas orientadas a fortalecer
+                            los servicios esenciales y la infraestructura
+                            pública de nuestras comunidades.
+                        </p>
+
+                        <div class="leg-simple-list">
+
+                            <div class="leg-simple-item">
+                                <strong>Estación de Bomberos</strong>
+                                <span>
+                                    Gestión para la construcción de una
+                                    moderna estación de bomberos en Haina.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Cementerio Municipal</strong>
+                                <span>
+                                    Propuesta para la edificación de un
+                                    nuevo cementerio municipal.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Distrito Educativo 04-06</strong>
+                                <span>
+                                    Gestión formal para el traspaso del
+                                    local del IMPOSDOM.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="leg-panel-media">
+
+                        <img
+                            src="img/servicios.jpg"
+                            alt="Infraestructura comunitaria"
+                        >
+
+                        <span class="leg-panel-number">
+                            02
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     03 · DEPORTE
+                     ========================= -->
+                <div
+                    class="leg-panel"
+                    id="panel-deporte"
+                    role="tabpanel"
+                >
+
+                    <div class="leg-panel-info">
+
+
+
+                        <h3>
+                            Deporte e Identidad
+                            Local
+                        </h3>
+
+                        <p class="leg-panel-description">
+                            Iniciativas destinadas a fortalecer los
+                            espacios deportivos y preservar la identidad
+                            de nuestras comunidades.
+                        </p>
+
+                        <div class="leg-simple-list">
+
+                            <div class="leg-simple-item">
+                                <strong>Club Centro · Haina</strong>
+                                <span>
+                                    Proyecto para el techado de la cancha.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Sabaneta · El Carril</strong>
+                                <span>
+                                    Construcción de una cancha deportiva.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Polideportivo Municipal</strong>
+                                <span>
+                                    Propuesta de ley para reconocer a
+                                    Cándido Antonio Sibilio Hughes
+                                    “Chicho Sibilio”.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="leg-panel-media">
+
+                        <img
+                            src="img/deporte.jpg"
+                            alt="Deporte e identidad local"
+                        >
+
+                        <span class="leg-panel-number">
+                            03
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     04 · FISCALIZACIÓN
+                     ========================= -->
+                <div
+                    class="leg-panel"
+                    id="panel-fiscalizacion"
+                    role="tabpanel"
+                >
+
+                    <div class="leg-panel-info">
+
+
+                        <h3>
+                            Fiscalización y
+                            Control Político
+                        </h3>
+
+                        <p class="leg-panel-description">
+                            Intervenciones realizadas desde el Congreso
+                            para exigir respuestas, transparencia y
+                            seguimiento a las necesidades de nuestras
+                            comunidades.
+                        </p>
+
+                        <div class="leg-simple-list">
+
+                            <div class="leg-simple-item">
+                                <strong>Acueducto de Haina</strong>
+                                <span>
+                                    Exigencia de transparencia sobre
+                                    su correcto funcionamiento.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Obras paralizadas</strong>
+                                <span>
+                                    Solicitud de reinicio de obras
+                                    comunitarias pendientes.
+                                </span>
+                            </div>
+
+                            <div class="leg-simple-item">
+                                <strong>Gestión institucional</strong>
+                                <span>
+                                    Gestiones ante MIVHED y MIDEREC.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="leg-panel-media">
+
+                        <img
+                            src="img/fiscalizacion.jpg"
+                            alt="Labor de fiscalización en el Congreso"
+                        >
+
+                        <span class="leg-panel-number">
+                            04
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- =========================================
+         OBRAS SOCIALES
+         ========================================= -->
+    <section id="obras-sociales" class="social-impact-section">
+        <div class="wrap">
+            <div class="social-impact-header">
+                <div>
+                    <div class="social-impact-kicker">
+                        <span>Impacto Comunitario</span>
+                    </div>
+                    <h2>Obras Sociales<br>que dejan huella</h2>
+                    <p>
+                        Gestión comunitaria enfocada en las necesidades reales de Haina,
+                        sus sectores y las familias que sostienen nuestra comunidad.
+                    </p>
+                </div>
+
+                <div class="social-impact-stat">
+                    <div>
+                        <small>Compromiso con</small>
+                        <strong>03</strong>
+                        <span>Áreas de impacto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-impact-grid">
+                <article class="social-impact-card featured">
+                    <div class="social-impact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M3 10.5 12 4l9 6.5"/>
+                            <path d="M5.5 9.5V20h13V9.5M9 20v-6h6v6"/>
+                        </svg>
+                    </div>
+                    <div class="social-impact-card-content">
+                        <span class="index">01 / COMUNIDAD</span>
+                        <h3>Demarcaciones de Haina</h3>
+                        <p>
+                            Gestión comunitaria directa con operativos de salud, apoyo a
+                            jóvenes deportistas y soluciones puntuales en infraestructuras locales.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="social-impact-card">
+                    <div class="social-impact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 17h14l-1.2-7H6.2L5 17Z"/>
+                            <path d="M8 10V7h8v3M7 17v2M17 17v2"/>
+                            <circle cx="8" cy="17" r="1.5"/>
+                            <circle cx="16" cy="17" r="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="social-impact-card-content">
+                        <span class="index">02 / TRANSPORTE</span>
+                        <h3>Sector Transporte</h3>
+                        <p>
+                            Programas de asistencia, modernización y defensa gremial para
+                            choferes y familias del volante.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="social-impact-card">
+                    <div class="social-impact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                            <circle cx="12" cy="10" r="2.2"/>
+                        </svg>
+                    </div>
+                    <div class="social-impact-card-content">
+                        <span class="index">03 / TERRITORIO</span>
+                        <h3>Presencia en la comunidad</h3>
+                        <p>
+                            Acompañamiento y gestión cercana para identificar necesidades
+                            y canalizar soluciones en los sectores.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="social-impact-bottom">
+                <div class="social-impact-note">
+                    <strong>Trabajo en territorio</strong>
+                    <span>Escuchar, gestionar y acompañar a las comunidades.</span>
+                </div>
+                <div class="social-impact-note">
+                    <strong>Compromiso permanente</strong>
+                    <span>La labor social continúa más allá de una jornada electoral.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         GALERÍA
+         ========================================= -->
+    <section id="galeria" class="gallery-section">
+        <div class="wrap">
+            <div class="gallery-header">
+                <div class="sec-head">
+                    <span class="eyebrow">En imágenes</span>
+                    <h2>Galería</h2>
+                    <p>
+                        Un recorrido visual por el trabajo, la comunidad y los espacios
+                        donde se construye este compromiso con Haina.
+                    </p>
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <figure class="gallery-item large">
+                    <img src="img/galeria/SaveClip.App_569208998_24563840496622004_3260616972115857483_n.jpg" alt="Antonio Brito junto a la comunidad" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Comunidad</span>
+                        <strong>Trabajo cercano a nuestra gente</strong>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="img/galeria/SaveClip.App_595752184_24925917850414265_1795301816417151080_n.jpg" alt="Antonio Brito durante una actividad comunitaria" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Territorio</span>
+                        <strong>Presencia en Haina</strong>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="img/galeria/SaveClip.App_614362923_25221767027496011_4770174981376270974_n.jpg" alt="Antonio Brito durante una jornada de trabajo" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Gestión</span>
+                        <strong>Escuchar para gestionar</strong>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="img/galeria/SaveClip.App_689702542_26331818949824141_2540523141842683344_n.jpg" alt="Antonio Brito con ciudadanos" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Compromiso</span>
+                        <strong>Juntos construimos</strong>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="img/galeria/SaveClip.App_718311251_26748080171531348_5175541518820865596_n.jpg" alt="Antonio Brito en actividad comunitaria" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Comunidad</span>
+                        <strong>Presencia junto a la gente</strong>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="img/galeria/SaveClip.App_735222790_27043978525274843_1927025603445398202_n.jpg" alt="Antonio Brito durante una actividad pública" loading="lazy">
+                    <figcaption class="gallery-caption">
+                        <span>Acción</span>
+                        <strong>Trabajo que se ve</strong>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         CONTACTO — SIN FORMULARIO
+         ========================================= -->
+    <section id="contacto" class="contact-section">
+        <div class="wrap">
+            <div class="contact-main">
+                <div class="contact-intro">
+                    <span class="eyebrow">Contacto</span>
+                    <h2>Hablemos de Haina.</h2>
+                    <p>
+                        Para conocer más sobre el trabajo de Antonio Brito, compartir
+                        una inquietud comunitaria o mantenerse en contacto con su labor,
+                        puedes utilizar los canales oficiales.
+                    </p>
+
+                    <div class="contact-person">
+                        <strong>Antonio Brito</strong>
+                        <span>Diputado por Haina · Movimiento Rebelde</span>
+                    </div>
+                </div>
+
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+                                <circle cx="12" cy="10" r="2.2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <small>Ubicación</small>
+                            <strong>Bajos de Haina, República Dominicana</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                <path d="m3 7 9 6 9-6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <small>Correo electrónico</small>
+                            <a href="mailto:info@antoniobrito.do">info@antoniobrito.do</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M6.5 3h3l1.5 4-2.1 1.7a15 15 0 0 0 6.4 6.4L17 13l4 1.5v3c0 1.1-.9 2-2 2C10.7 19.5 4.5 13.3 4.5 5c0-1.1.9-2 2-2Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <small>Redes sociales</small>
+                            <strong>Sigue la labor de Antonio Brito</strong>
+                            <div class="contact-socials">
+                                <a href="https://web.facebook.com/antonio.britorodriguez/?locale=es_LA&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+                                <a href="https://www.instagram.com/antoniobritodiputado/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+    <footer>
+        <div class="footer-inner">
+            <div class="wrap">
+                <div class="footer-main">
+                    <div class="footer-message">
+                        <h3>Por Haina.<br>Por su gente.</h3>
+                        <p>
+                            Una gestión cercana, presente y comprometida con el desarrollo de nuestras comunidades.
+                        </p>
+                    </div>
+
+                    <div class="footer-meta">
+                        <strong>Antonio Brito</strong>
+                        <span>Diputado por Haina · Movimiento Rebelde</span>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <span>© 2026 Antonio Brito. Todos los derechos reservados.</span>
+                    <span>Bajos de Haina, República Dominicana</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+    <script>
+        // Pestañas de Labor Legislativa
+        const tabBtns = document.querySelectorAll('.leg-tab-btn');
+        const panels = document.querySelectorAll('.leg-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                panels.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Menú Hamburguesa para Móviles
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('nav.links a, .nav-cta').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                });
+            });
+        }
+
+        const siteHeader = document.getElementById('siteHeader');
+
+        const updateHeaderState = () => {
+            siteHeader.classList.toggle('scrolled', window.scrollY > 8);
+        };
+
+        updateHeaderState();
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+    </script>
+</body>
+</html>
